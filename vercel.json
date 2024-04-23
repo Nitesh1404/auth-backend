@@ -3,19 +3,19 @@
 	"routes": [
 		{
 			"src": "/api/auth/(createuser|login|getuser)",
-			"dest": "backend/api/auth.js"
+			"dest": "backend/routes/auth.js"
 		},
 		{
 			"src": "/api/auth/(.*)",
-			"dest": "backend/api/auth/$1"
+			"dest": "backend/routes/auth.js"
 		},
 		{
 			"src": "/api/(.*)",
-			"dest": "backend/api/$1"
+			"dest": "backend/routes/$1"
 		},
 		{
 			"src": "/(.*)",
-			"dest": "frontend/$1"
+			"dest": "backend/routes/$1"
 		}
 	]
 }
