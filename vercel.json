@@ -1,5 +1,6 @@
 {
 	"version": 2,
+	"name": "user-auth",
 	"builds": [
 		{
 			"src": "index.js",
@@ -9,10 +10,11 @@
 	"routes": [
 		{
 			"src": "/api/auth/(.*)",
-			"dest": "/api/auth"
+			"dest": "/index.js"
 		},
 		{
-			"handle": "filesystem"
+			"src": "/(.*)",
+			"dest": "/index.js"
 		}
 	]
 }
