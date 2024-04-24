@@ -2,32 +2,39 @@ const express = require('express');
 const connectToMongoDb = require('./db');
 require('dotenv').config();
 
+const cors = require('cors');
 
-
-var cors = require('cors')
-// connection to mongodb
+// Connection to MongoDB
 connectToMongoDb();
-const app = express();
-const port = 5000;
 
-// cors middleware
-const conrsConfig = {
-	origin: ['https://auth-backend-pi.vercel.app'],
+const app = express();
+const port = process.env.PORT || 5000; // Use environment port or default to 5000
+
+// CORS middleware configuration
+const corsConfig = {
+	origin: '*',
 	methods: ["POST", "GET"],
 	credentials: true
-}
-app.use(cors(conrsConfig));
+};
+app.use(cors(corsConfig));
 
-// middleware to fetch json data from the website body
+// Middleware to parse JSON requests
 app.use(express.json());
 
 app.get('/', (req, res) => {
-	res.send("app running");
-})
+	res.send("App running");
+});
 
+// Mounting auth routes
 app.use('/api/auth', require('./routes/auth'));
 
+// Error handling middleware (optional but recommended)
+app.use((err, req, res, next) => {
+	console.error(err.stack);
+	res.status(500).send('Something broke!');
+});
 
+// Start the server
 app.listen(port, () => {
-	console.log(`The app listening on port ${port}`)
+	console.log(`Server is listening on port ${port}`);
 });
