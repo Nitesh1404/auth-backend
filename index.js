@@ -12,7 +12,7 @@ const port = 5000;
 
 // cors middleware
 const conrsConfig = {
-	origin: '*',
+	origin: 'https://auth-backend-pi.vercel.app',
 	credential: true,
 	methods: ["POST", "GET"],
 }
