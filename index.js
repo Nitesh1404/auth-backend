@@ -12,7 +12,7 @@ const port = process.env.PORT || 5000; // Use environment port or default to 500
 
 // CORS middleware configuration
 const corsConfig = {
-	origin: '*',
+	origin: 'https://user-authentication-amber.vercel.app',
 	methods: ["POST", "GET"],
 	credentials: true
 };
